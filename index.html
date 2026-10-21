@@ -7,22 +7,22 @@
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..100,500..800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
-/* Layout: an engineering drawing set. Each project is a "sheet" with a title block, then drawings, data and a build log on a left-aligned 12-col grid. */
+/* Layout: image-first portfolio. Home opens straight onto a 3-up grid of project plates; each project opens on its lead image, then a two-column summary (contribution | specs), then the detail sections. */
 :root{
-  --paper:#F4F5F2; --panel:#FFFFFF; --ink:#1B2330; --muted:#5A6472; --rule:#D2D7D4; --grid:#E6E9E6;
-  --accent:#C9501C; --accent-soft:#F6E3D8;
-  --display:"Archivo","Arial Narrow",Arial,sans-serif;
+  --paper:#F4F6F8; --panel:#FFFFFF; --ink:#0D1420; --muted:#586374; --rule:#D8DEE6; --grid:#E6EAF0; --gridline:#E9EDF2;
+  --accent:#1F5FAD; --accent-soft:#E2ECF8;
+  --display:"Schibsted Grotesk","Helvetica Neue",Arial,sans-serif;
   --body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
   --mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --paper:#141A21; --panel:#1B232C; --ink:#E5E9ED; --muted:#9BA5B1; --rule:#2E3843; --grid:#222B35;
-  --accent:#E9875A; --accent-soft:#3A2A22; color-scheme:dark}}
+  --paper:#0A0E14; --panel:#111720; --ink:#E6EBF2; --muted:#8E9AAD; --rule:#232D3B; --grid:#1A222E; --gridline:#111821;
+  --accent:#7FB0F5; --accent-soft:#14223A; color-scheme:dark}}
 :root[data-theme="dark"]{
-  --paper:#141A21; --panel:#1B232C; --ink:#E5E9ED; --muted:#9BA5B1; --rule:#2E3843; --grid:#222B35;
-  --accent:#E9875A; --accent-soft:#3A2A22; color-scheme:dark}
+  --paper:#0A0E14; --panel:#111720; --ink:#E6EBF2; --muted:#8E9AAD; --rule:#232D3B; --grid:#1A222E; --gridline:#111821;
+  --accent:#7FB0F5; --accent-soft:#14223A; color-scheme:dark}
 
 *{box-sizing:border-box}
 body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.6;
@@ -292,11 +292,113 @@ footer.site-foot .wrap{padding-block:28px 40px;display:flex;justify-content:spac
   .index li a{grid-template-columns:70px minmax(0,1fr)}.index li a .label:last-child{display:none}
 }
 @media (prefers-reduced-motion:no-preference){.index li a .t{transition:color .15s}}
+
+/* ================= refresh: image-first, quieter chrome ================= */
+h1,h2,h3{font-stretch:normal;letter-spacing:-.02em;font-weight:700}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--paper)}
+.site{border-bottom:0}
+.site .wrap{padding-block:40px 22px;align-items:center}
+.site h1{font-size:clamp(34px,5vw,52px)}
+.site .tag{margin-top:8px;font-size:16px;max-width:62ch}
+.skills{margin-top:14px;gap:6px}
+.chip{border-radius:999px;padding:3px 11px;font-size:12px}
+.copy{border-radius:999px;padding:3px 10px}
+.work{padding-block:6px 64px}
+.work-head{margin-bottom:16px;padding-top:18px;border-top:1px solid var(--rule)}
+.work-head h2{font-family:var(--mono);font-size:12px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.cards{grid-template-columns:repeat(3,minmax(0,1fr));gap:36px 24px}
+@media (max-width:980px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:620px){.cards{grid-template-columns:1fr}}
+.card,.card:hover{background:transparent;border:0;box-shadow:none;transform:none;grid-template-rows:auto auto}
+.card .thumb{aspect-ratio:4/3;border:1px solid var(--rule);border-radius:8px;background:var(--panel)}
+.card .thumb img{transition:transform .5s ease}
+.card:hover .thumb{border-color:var(--accent)}
+.card:hover .thumb img{transform:scale(1.035)}
+@media (prefers-reduced-motion:reduce){.card .thumb img,.card:hover .thumb img{transition:none;transform:none}}
+.card .info{padding:14px 2px 0;gap:6px}
+.card .info .label{font-size:10.5px}
+.card h3{font-size:19px;line-height:1.2}
+.card:hover h3{color:var(--accent)}
+.card .pr{font-size:13.5px;line-height:1.45;grid-template-columns:52px minmax(0,1fr);color:var(--muted)}
+.card .pr b{font-size:10px}
+.card .chip{margin-top:4px}
+.caps{background:transparent;border-top:1px solid var(--rule);border-bottom:0}
+.caps .wrap{padding-block:36px 8px}
+.frame{border-radius:8px}
+.viewer{border-radius:8px}
+.sheetbar{margin-bottom:0}
+.p-head{max-width:880px;padding-top:20px}
+.p-head h2{font-size:clamp(30px,4.6vw,50px);margin-top:6px}
+.p-head .lede{margin-top:10px;font-size:17px;color:var(--muted)}
+.lead-visual,.hero.lead-visual{margin-top:26px}
+.summary{margin-top:44px;display:grid;grid-template-columns:minmax(0,1.75fr) minmax(0,1fr);gap:48px;align-items:start}
+.summary .contrib-top{margin-top:0}
+.summary .contrib > div{grid-template-columns:130px minmax(0,1fr)}
+.facts-col{padding:18px 20px;background:var(--panel);border:1px solid var(--rule);border-radius:8px}
+.facts-col .meta{margin:0;grid-template-columns:1fr;border:0}
+.facts-col .meta > div{padding:9px 0!important;border:0!important;border-bottom:1px solid var(--rule)!important;display:grid;grid-template-columns:84px minmax(0,1fr);gap:12px;align-items:baseline}
+.facts-col .meta > div:last-child{border-bottom:0!important}
+.facts-col .meta dd{margin:0}
+@media (max-width:860px){.summary{grid-template-columns:1fr;gap:24px}.summary .contrib > div{grid-template-columns:1fr;gap:4px}}
+.block{margin-top:64px}
+.block h3{font-size:24px}
+.card{align-content:start}
+.hero.lead-visual{align-items:start}
+.hero.lead-visual .frame{height:clamp(260px,46vw,460px)}
+.hero.lead-visual .frame img,.hero.lead-visual .frame video{width:100%;height:100%;object-fit:cover;max-height:none}
+.hero.lead-visual .cad img{object-fit:contain}
+@media (max-width:620px){
+  .site .wrap{padding-block:24px 14px;gap:12px}
+  .site .tag{font-size:15px}
+  .skills{display:none}
+  .work-head .label{display:none}
+  .work-head{padding-top:12px;margin-bottom:12px}
+  .hero.lead-visual .frame{height:300px}
+}
+
+/* ================= tech layer: drawing grid, registration marks, spec labels ================= */
+body{background-color:var(--paper);
+  background-image:linear-gradient(var(--gridline) 1px,transparent 1px),linear-gradient(90deg,var(--gridline) 1px,transparent 1px);
+  background-size:32px 32px;background-position:-1px -1px}
+.kicker{color:var(--accent);margin-bottom:10px;display:flex;align-items:center;gap:10px}
+.kicker::before{content:"";width:22px;height:1.5px;background:var(--accent)}
+.site h1{letter-spacing:-.035em}
+.cards{counter-reset:card}
+.card{counter-increment:card}
+.card .thumb{position:relative}
+.card .thumb::after{content:counter(card,decimal-leading-zero) " / 06";position:absolute;top:10px;left:10px;z-index:2;
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;color:var(--ink);background:var(--panel);
+  border:1px solid var(--rule);border-radius:3px;padding:2px 6px}
+.card .thumb::before{content:"";position:absolute;inset:8px;z-index:2;pointer-events:none;opacity:0;transition:opacity .25s;
+  background:
+   linear-gradient(var(--accent),var(--accent)) left top/16px 1.5px no-repeat,
+   linear-gradient(var(--accent),var(--accent)) left top/1.5px 16px no-repeat,
+   linear-gradient(var(--accent),var(--accent)) right top/16px 1.5px no-repeat,
+   linear-gradient(var(--accent),var(--accent)) right top/1.5px 16px no-repeat,
+   linear-gradient(var(--accent),var(--accent)) left bottom/16px 1.5px no-repeat,
+   linear-gradient(var(--accent),var(--accent)) left bottom/1.5px 16px no-repeat,
+   linear-gradient(var(--accent),var(--accent)) right bottom/16px 1.5px no-repeat,
+   linear-gradient(var(--accent),var(--accent)) right bottom/1.5px 16px no-repeat}
+.card:hover .thumb::before,.card:focus-visible .thumb::before{opacity:1}
+.card .chip.hot,.chip.hot{border-radius:3px;font-size:11.5px}
+.block > .label,.block .txt > .label,.contrib-top > .label,.viewer-head .label{display:flex;align-items:center;gap:12px}
+.block > .label::after,.block .txt > .label::after,.contrib-top > .label::after{content:"";flex:1;height:1px;background:var(--rule)}
+.p-head > .label{color:var(--accent)}
+.facts-col{border-radius:4px;position:relative}
+.facts-col::before{content:"SPEC";position:absolute;top:-9px;left:14px;padding:0 6px;background:var(--paper);
+  font-family:var(--mono);font-size:10px;letter-spacing:.12em;color:var(--accent)}
+.facts-col .meta dt{color:var(--muted)}
+.frame,.card .thumb,.viewer{border-radius:4px}
+.lead-visual figcaption b,figcaption b{color:var(--accent)}
+.contrib{border-top:1.5px solid var(--ink)}
+.caps-grid .label,.glance .label{color:var(--accent)}
+.sheetbar{background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
 </style>
 
 <header class="site">
   <div class="wrap">
     <div>
+      <p class="label kicker">Engineering portfolio · Medical device R&amp;D · Toronto, ON</p>
       <h1>Jessy Gong</h1>
       <p class="tag">Materials engineer (MEng, University of Toronto) for medical device R&amp;D. I design in CAD, build and test prototypes, find out why they fail, and fix them.</p>
       <div class="skills"><span class="chip">SolidWorks · Fusion 360</span><span class="chip">ANSYS FEA / Fluent</span><span class="chip">3D printing &amp; soft lithography</span><span class="chip">Cell culture &amp; confocal imaging</span><span class="chip">Root cause analysis</span></div>
@@ -308,21 +410,6 @@ footer.site-foot .wrap{padding-block:28px 40px;display:flex;justify-content:spac
   </div>
 </header>
 
-<section class="caps" aria-label="What I bring">
-  <div class="wrap">
-    <div class="caps-grid">
-      <div><p class="label">Design &amp; CAD</p><p>SolidWorks and Fusion 360 models with full drawings; ANSYS Fluent blade analysis.</p><a href="#wind-turbine">Wind turbine →</a></div>
-      <div><p class="label">Problem solving</p><p>Root-caused a stalled rotor and a failing cell culture, then fixed both.</p><a href="#hatton-lab">Hatton Lab →</a></div>
-      <div><p class="label">Prototyping</p><p>3D printing, PDMS soft lithography, grinding, epoxy bonding and assembly.</p><a href="#wind-turbine">Build log →</a></div>
-      <div><p class="label">Lab testing</p><p>Cell culture, live/dead staining, fluorescence and confocal imaging, depth analysis.</p><a href="#hatton-lab">Results →</a></div>
-    </div>
-    <div class="edu">
-      <span><b>MEng</b> Materials Science &amp; Engineering, University of Toronto, 2026 · GPA 3.75</span>
-      <span><b>BASc</b> Materials Science &amp; Engineering, University of Toronto, 2025</span>
-      <span><b>Publication</b> Co-author, review on hydrogel-forming microneedle arrays, <a href="https://doi.org/10.1016/j.trac.2025.118610" target="_blank" rel="noopener">TrAC Trends in Analytical Chemistry, 2026</a></span>
-    </div>
-  </div>
-</section>
 
 <section class="work" id="work" aria-label="Projects">
   <div class="wrap">
@@ -386,6 +473,22 @@ footer.site-foot .wrap{padding-block:28px 40px;display:flex;justify-content:spac
   </div>
 </section>
 
+<section class="caps" aria-label="What I bring">
+  <div class="wrap">
+    <div class="caps-grid">
+      <div><p class="label">Design &amp; CAD</p><p>SolidWorks and Fusion 360 models with full drawings; ANSYS Fluent blade analysis.</p><a href="#wind-turbine">Wind turbine →</a></div>
+      <div><p class="label">Problem solving</p><p>Root-caused a stalled rotor and a failing cell culture, then fixed both.</p><a href="#hatton-lab">Hatton Lab →</a></div>
+      <div><p class="label">Prototyping</p><p>3D printing, PDMS soft lithography, grinding, epoxy bonding and assembly.</p><a href="#wind-turbine">Build log →</a></div>
+      <div><p class="label">Lab testing</p><p>Cell culture, live/dead staining, fluorescence and confocal imaging, depth analysis.</p><a href="#hatton-lab">Results →</a></div>
+    </div>
+    <div class="edu">
+      <span><b>MEng</b> Materials Science &amp; Engineering, University of Toronto, 2026 · GPA 3.75</span>
+      <span><b>BASc</b> Materials Science &amp; Engineering, University of Toronto, 2025</span>
+      <span><b>Publication</b> Co-author, review on hydrogel-forming microneedle arrays, <a href="https://doi.org/10.1016/j.trac.2025.118610" target="_blank" rel="noopener">TrAC Trends in Analytical Chemistry, 2026</a></span>
+    </div>
+  </div>
+</section>
+
 <main class="wrap">
 <article class="sheet" id="wind-turbine" data-sheet="1">
   <div class="sheetbar"><a href="#work">← All projects</a><div class="pn"><a class="prev" href="#work" hidden>← Prev</a><a class="next" href="#work" hidden>Next →</a></div></div>
@@ -393,13 +496,15 @@ footer.site-foot .wrap{padding-block:28px 40px;display:flex;justify-content:spac
     <p class="label">Sheet 01 · Year-long engineering capstone · Sep 2023 – Apr 2024</p>
     <h2>PEI Wind Turbine, <em>1:200</em></h2>
     <p class="lede">Scaled turbine for a failing PEI wind farm.</p>
-    <dl class="meta"><div><dt>Role</dt><dd>Team lead, 5 students</dd></div><div><dt>Tools</dt><dd>SolidWorks · FMEA · ANSYS Fluent</dd></div><div><dt>Build</dt><dd>3D-printed PLA, hand-finished</dd></div><div><dt>Result</dt><dd class="hot">1st place · +9% power</dd></div></dl>
   </header>
+  <div class="hero lead-visual"><figure><div class="frame photo"><img src="img/prototype.jpg" alt="Finished 3D-printed wind turbine prototype" width="1100" height="1466"></div><figcaption><b>FIG 1</b>Finished prototype</figcaption></figure><figure><div class="frame cad white"><img src="img/assembly-cad.jpg" alt="SolidWorks assembly of the turbine" width="800" height="940"></div><figcaption><b>FIG 2</b>SolidWorks assembly</figcaption></figure></div>
+  <div class="summary">
   <section class="block contrib-top">
     <p class="label">My contribution</p>
     <dl class="contrib"><div><dt>Problem solving</dt><dd>Refined blade dimensions through test-driven root cause analysis; fixed a test-day stall.</dd></div><div><dt>Design</dt><dd>Designed the blade in SolidWorks; chose a low-cost, corrosion-resistant material with FMEA.</dd></div><div><dt>Build</dt><dd>Assembled and finished the blade; fixed misfit parts, wobble and a stuck rotor.</dd></div><div class="res"><dt>Result</dt><dd>Power <strong>9% above cohort average</strong>, <strong>1st place</strong>.</dd></div></dl>
   </section>
-  <div class="hero"><figure><div class="frame photo"><img src="img/prototype.jpg" alt="Finished 3D-printed wind turbine prototype" width="1100" height="1466"></div><figcaption><b>FIG 1</b>Finished prototype</figcaption></figure><figure><div class="frame cad white"><img src="img/assembly-cad.jpg" alt="SolidWorks assembly of the turbine" width="800" height="940"></div><figcaption><b>FIG 2</b>SolidWorks assembly</figcaption></figure></div>
+  <aside class="facts-col"><dl class="meta"><div><dt>Role</dt><dd>Team lead, 5 students</dd></div><div><dt>Tools</dt><dd>SolidWorks · FMEA · ANSYS Fluent</dd></div><div><dt>Build</dt><dd>3D-printed PLA, hand-finished</dd></div><div><dt>Result</dt><dd class="hot">1st place · +9% power</dd></div></dl></aside>
+  </div>
   <section class="block split">
     <div class="txt"><p class="label">01 · Problem</p><h3>A wind farm at 10% capacity</h3><ul class="did"><li>Blade studs broke, bearings cracked, laminate sheared</li><li>Brief: 1:200 model, 20 × 30 cm envelope, under $100</li></ul></div>
     <div><div class="facts"><div><div class="v num">10%</div><div class="k">of design capacity</div></div><div><div class="v num">4 / 10</div><div class="k">turbines running</div></div><div><div class="v num">200+</div><div class="k">blade studs failed</div></div></div></div>
@@ -424,16 +529,18 @@ footer.site-foot .wrap{padding-block:28px 40px;display:flex;justify-content:spac
     <p class="label">Sheet 02 · Biomedical Device &amp; Tissue Engineering Project · Jan – May 2024</p>
     <h2>3D Multi-Layer Microfluidic <em>Tumor-on-a-Chip</em></h2>
     <p class="lede">Breast tumor chamber linked to a bone chamber.</p>
-    <dl class="meta"><div><dt>Role</dt><dd>Designer</dd></div><div><dt>Tools</dt><dd>SolidWorks · PDMS soft lithography</dd></div><div><dt>Size</dt><dd>30 × 30 × 6.5 mm, 3 layers</dd></div><div><dt>Result</dt><dd class="hot">Top 5% in Course</dd></div></dl>
   </header>
+  <section class="block lead-visual">
+    <div class="viewer-head"><p class="label" style="color:var(--accent)">3D model · drag to rotate</p><div class="viewer-btns"><button type="button" class="copy" id="ocExplode">Explode layers</button><button type="button" class="copy" id="ocReset">Reset view</button></div></div>
+    <div class="viewer" id="oc-viewer" role="img" aria-label="Interactive 3D model of the three-layer chip"><p class="viewer-msg" id="ocMsg">Loading 3D model…</p></div>
+  </section>
+  <div class="summary">
   <section class="block contrib-top">
     <p class="label">My contribution</p>
     <dl class="contrib"><div><dt>Design</dt><dd>3-layer chip in SolidWorks; iterated channel geometry, fluidic resistance and layer alignment.</dd></div><div><dt>Problem solving</dt><dd>Achieved leak-free flow by refining PDMS plasma bonding.</dd></div><div><dt>Testing</dt><dd>Evaluated drug delivery with live/dead imaging and viability assays.</dd></div><div class="res"><dt>Result</dt><dd><strong>Top 5% in Course</strong>; 10 µm membrane isolates compartments for drug testing.</dd></div></dl>
   </section>
-  <section class="block">
-    <div class="viewer-head"><p class="label" style="color:var(--accent)">3D model · drag to rotate</p><div class="viewer-btns"><button type="button" class="copy" id="ocExplode">Explode layers</button><button type="button" class="copy" id="ocReset">Reset view</button></div></div>
-    <div class="viewer" id="oc-viewer" role="img" aria-label="Interactive 3D model of the three-layer chip"><p class="viewer-msg" id="ocMsg">Loading 3D model…</p></div>
-  </section>
+  <aside class="facts-col"><dl class="meta"><div><dt>Role</dt><dd>Designer</dd></div><div><dt>Tools</dt><dd>SolidWorks · PDMS soft lithography</dd></div><div><dt>Size</dt><dd>30 × 30 × 6.5 mm, 3 layers</dd></div><div><dt>Result</dt><dd class="hot">Top 5% in Course</dd></div></dl></aside>
+  </div>
   <section class="block">
     <p class="label">01 · Layers</p><h3>Three layers, three jobs</h3><ul class="did"><li><b>Layer 1</b> (2.5 mm): tumor + bone chambers, 4 inlets, 4 outlets, migration channels</li><li><b>Layer 2</b> (2.0 mm): 10 µm-pore membrane, drug-delivery channels</li><li><b>Layer 3</b> (2.0 mm): support and sealing</li><li>All channels 0.3 mm, sized for 100–200 µm spheroids</li></ul><div class="gal gal-2" style="margin-top:14px"><figure><div class="frame white" style="height:auto"><img src="img/oc-top.jpg" alt="Top view of layer 1" width="884" height="890" loading="lazy"></div><figcaption><b>FIG 1</b>Layer 1: 8 ports feeding two chambers</figcaption></figure><figure><div class="frame white" style="height:auto"><img src="img/oc-layer2.jpg" alt="Top view of layer 2 with membrane" width="914" height="869" loading="lazy"></div><figcaption><b>FIG 2</b>Layer 2: membrane (red), ports (orange)</figcaption></figure></div>
   </section>
@@ -449,13 +556,15 @@ footer.site-foot .wrap{padding-block:28px 40px;display:flex;justify-content:spac
     <p class="label">Sheet 03 · Hatton Lab, U of T · Sep 2024 – May 2025</p>
     <h2>Microfluidic Wound-Healing <em>Device &amp; Bioink</em></h2>
     <p class="lede">Device iteration and collagen bioink testing.</p>
-    <dl class="meta"><div><dt>Role</dt><dd>Research Assistant (incl. thesis)</dd></div><div><dt>Supervision</dt><dd>Prof. B. D. Hatton · M. Karimi, PhD</dd></div><div><dt>Methods</dt><dd>HDFa culture · PDMS · bio-3D printing · confocal</dd></div><div><dt>Result</dt><dd class="hot">+30% · +13% · +10%</dd></div></dl>
   </header>
+  <div class="hero lead-visual"><figure><div class="frame " style="background:#000"><img src="img/hl-fluor-d9.jpg" alt="Live fibroblasts in gel" width="1100" height="828"></div><figcaption><b>FIG 1</b>Day 9: live fibroblasts in the 2-layer gel</figcaption></figure><figure><div class="frame " style="background:#000"><img src="img/hl-zstack.jpg" alt="Composite z-stack" width="1400" height="949"></div><figcaption><b>FIG 2</b>Z-stack used to measure migration depth</figcaption></figure></div>
+  <div class="summary">
   <section class="block contrib-top">
     <p class="label">My contribution</p>
     <dl class="contrib"><div><dt>Problem solving</dt><dd>Traced poor cell growth to high-passage cells and expired medium; viability <strong>+10%</strong>.</dd></div><div><dt>Design</dt><dd>Redesigned channel geometry and count; drug-distribution uniformity <strong>+30%</strong>.</dd></div><div><dt>Testing</dt><dd>Tested gel formulations and layer counts; set a 2-layer minimum.</dd></div><div class="res"><dt>Result</dt><dd>Fibroblast penetration depth <strong>+13%</strong>; 2D flask controls failed.</dd></div></dl>
   </section>
-  <div class="hero"><figure><div class="frame " style="background:#000"><img src="img/hl-fluor-d9.jpg" alt="Live fibroblasts in gel" width="1100" height="828"></div><figcaption><b>FIG 1</b>Day 9: live fibroblasts in the 2-layer gel</figcaption></figure><figure><div class="frame " style="background:#000"><img src="img/hl-zstack.jpg" alt="Composite z-stack" width="1400" height="949"></div><figcaption><b>FIG 2</b>Z-stack used to measure migration depth</figcaption></figure></div>
+  <aside class="facts-col"><dl class="meta"><div><dt>Role</dt><dd>Research Assistant (incl. thesis)</dd></div><div><dt>Supervision</dt><dd>Prof. B. D. Hatton · M. Karimi, PhD</dd></div><div><dt>Methods</dt><dd>HDFa culture · PDMS · bio-3D printing · confocal</dd></div><div><dt>Result</dt><dd class="hot">+30% · +13% · +10%</dd></div></dl></aside>
+  </div>
   <section class="block split">
     <div class="txt"><p class="label">01 · Context</p><h3>A dressing that delivers skin cells</h3><ul class="did"><li>Burn dressing that delivers cells and drugs evenly across large wounds (up to 200 cm²)</li><li>My part: device testing and optimization, bioink testing</li></ul></div>
     <div><figure><div class="frame white" style="height:auto"><img src="img/hl-injection.jpg" alt="Dye filling the 128-port device" width="662" height="150" loading="lazy"></div><figcaption><b>FIG 3</b>128 ports fill in 60 s. Device and image: M. Karimi, Prof. B. D. Hatton</figcaption></figure></div>
@@ -486,22 +595,24 @@ footer.site-foot .wrap{padding-block:28px 40px;display:flex;justify-content:spac
     <p class="label">Sheet 04 · Peer-reviewed publication · China Agricultural University · 2024 – 2025</p>
     <h2>Hydrogel-Forming <em>Microneedle Arrays</em></h2>
     <p class="lede">Review of HFMA materials, functionalization and applications.</p>
-    <dl class="meta"><div><dt>Role</dt><dd>Co-author (7 of 10)</dd></div><div><dt>Journal</dt><dd>Trends in Analytical Chemistry, Elsevier</dd></div><div><dt>Lab</dt><dd>Functional Nucleic Acid Lab, CAU</dd></div><div><dt>Result</dt><dd class="hot">Published, Dec 2025</dd></div></dl>
   </header>
+  <section class="block lead-visual">
+    <p class="label">01 · Applications</p><div class="pubgrid"><figure><div class="frame white" style="height:auto"><img src="img/pub-delivery.jpg" alt="HFMA delivery" width="1423" height="748" loading="lazy"></div><figcaption><b>Delivery</b>One-step or reservoir loading; passive or triggered release</figcaption></figure><figure><div class="frame white" style="height:auto"><img src="img/pub-sampling.jpg" alt="HFMA sampling" width="1423" height="802" loading="lazy"></div><figcaption><b>Sampling</b>Needles swell and absorb interstitial fluid</figcaption></figure><figure><div class="frame white" style="height:auto"><img src="img/pub-sensing.jpg" alt="HFMA sensing" width="1423" height="758" loading="lazy"></div><figcaption><b>Sensing</b>Fluorescence, colorimetry, Raman, electrochemistry</figcaption></figure></div>
+  </section>
+  <div class="summary">
   <section class="block contrib-top">
     <p class="label">My contribution</p>
     <dl class="contrib"><div><dt>Materials analysis</dt><dd>Analyzed and compared the three hydrogel classes used to make HFMAs: natural, semi-synthetic, and fully synthetic.</dd></div><div class="res"><dt>Result</dt><dd>Co-authored review published in <strong>TrAC 195 (2026) 118610</strong>.</dd></div></dl>
   </section>
+  <aside class="facts-col"><dl class="meta"><div><dt>Role</dt><dd>Co-author (7 of 10)</dd></div><div><dt>Journal</dt><dd>Trends in Analytical Chemistry, Elsevier</dd></div><div><dt>Lab</dt><dd>Functional Nucleic Acid Lab, CAU</dd></div><div><dt>Result</dt><dd class="hot">Published, Dec 2025</dd></div></dl></aside>
+  </div>
   <section class="block">
-    <p class="label">01 · Materials</p><h3>Three hydrogel classes</h3>
+    <p class="label">02 · Materials</p><h3>Three hydrogel classes</h3>
     <div class="tablebox"><table class="spec"><thead><tr><th>Class</th><th>Examples</th><th>Strength</th><th>Limitation</th></tr></thead><tbody>
       <tr><td>Natural</td><td>Hyaluronic acid, chitosan, alginate, silk fibroin</td><td>Biocompatible, biodegradable, low cost</td><td>Weaker mechanics and swelling; often blended (e.g. PVP)</td></tr>
       <tr><td>Semi-synthetic</td><td>MeHA, GelMA</td><td>Photo-crosslinkable, stronger, biocompatible</td><td>Needs chemical modification</td></tr>
       <tr><td>Synthetic</td><td>Polymers from monomer polymerization</td><td>Tunable crosslinking and chemistry</td><td>Must be matched to the target function</td></tr>
     </tbody></table></div>
-  </section>
-  <section class="block">
-    <p class="label">02 · Applications</p><div class="pubgrid"><figure><div class="frame white" style="height:auto"><img src="img/pub-delivery.jpg" alt="HFMA delivery" width="1423" height="748" loading="lazy"></div><figcaption><b>Delivery</b>One-step or reservoir loading; passive or triggered release</figcaption></figure><figure><div class="frame white" style="height:auto"><img src="img/pub-sampling.jpg" alt="HFMA sampling" width="1423" height="802" loading="lazy"></div><figcaption><b>Sampling</b>Needles swell and absorb interstitial fluid</figcaption></figure><figure><div class="frame white" style="height:auto"><img src="img/pub-sensing.jpg" alt="HFMA sensing" width="1423" height="758" loading="lazy"></div><figcaption><b>Sensing</b>Fluorescence, colorimetry, Raman, electrochemistry</figcaption></figure></div>
   </section>
   <section class="block">
     <p class="cite">Wang Y., Zhang W., Zhang Y., Lan X., Chen M., Wang C., <b>Gong J.</b>, Wang X., Xu W., Zhu L. Advances in hydrogel-forming microneedle arrays: from functionalization to diverse application. <i>Trends in Analytical Chemistry</i> 195 (2026) 118610. <a href="https://doi.org/10.1016/j.trac.2025.118610" target="_blank" rel="noopener">doi.org/10.1016/j.trac.2025.118610</a></p>
@@ -514,13 +625,15 @@ footer.site-foot .wrap{padding-block:28px 40px;display:flex;justify-content:spac
     <p class="label">Sheet 05 · Conceptual design · MEng, University of Toronto · 2025</p>
     <h2>Smart Hydrogel for <em>Osteoarthritis</em></h2>
     <p class="lede">Releases IL-1Ra on inflammation and on load.</p>
-    <dl class="meta"><div><dt>Role</dt><dd>Co-designer with Jojo Peng</dd></div><div><dt>Type</dt><dd>Conceptual design</dd></div><div><dt>Methods</dt><dd>Material selection · targets · test planning</dd></div><div><dt>Result</dt><dd class="hot">Design + 3-stage test plan</dd></div></dl>
   </header>
+  <section class="block lead-visual"><figure><div class="frame white" style="height:auto"><img src="img/oa-schematic.jpg" alt="Concept schematic" width="1682" height="450" loading="lazy"></div><figcaption><b>FIG 1</b>Concept, from our joint proposal</figcaption></figure></section>
+  <div class="summary">
   <section class="block contrib-top">
     <p class="label">Contribution · co-designed with Jojo Peng</p>
     <dl class="contrib"><div><dt>Problem framing</dt><dd>IL-1Ra works but clears from the knee in 4–6 h.</dd></div><div><dt>Design</dt><dd>One depot: HA-Tyr gel, catechol adhesion, two responsive PLGA carriers.</dd></div><div><dt>Problem solving</dt><dd>A planned fallback for each technical risk.</dd></div><div class="res"><dt>Result</dt><dd><strong>Complete conceptual design</strong> and 3-stage test plan.</dd></div></dl>
   </section>
-  <section class="block"><figure><div class="frame white" style="height:auto"><img src="img/oa-schematic.jpg" alt="Concept schematic" width="1682" height="450" loading="lazy"></div><figcaption><b>FIG 1</b>Concept, from our joint proposal</figcaption></figure></section>
+  <aside class="facts-col"><dl class="meta"><div><dt>Role</dt><dd>Co-designer with Jojo Peng</dd></div><div><dt>Type</dt><dd>Conceptual design</dd></div><div><dt>Methods</dt><dd>Material selection · targets · test planning</dd></div><div><dt>Result</dt><dd class="hot">Design + 3-stage test plan</dd></div></dl></aside>
+  </div>
   <section class="block">
     <p class="label">01 · Design</p><h3>Four parts, four jobs</h3>
     <div class="tablebox"><table class="spec"><thead><tr><th>Component</th><th>Job</th><th>Target</th></tr></thead><tbody>
@@ -541,16 +654,18 @@ footer.site-foot .wrap{padding-block:28px 40px;display:flex;justify-content:spac
     <p class="label">Sheet 06 · Individual project · Sep 2023 – Jan 2024</p>
     <h2>Guitar String Deformation, <em>CAD + FEA</em></h2>
     <p class="lede">Why strings deform: SolidWorks model, ANSYS study.</p>
-    <dl class="meta"><div><dt>Role</dt><dd>Individual project</dd></div><div><dt>Tools</dt><dd>SolidWorks 2022 · ANSYS 2023 R2</dd></div><div><dt>Materials</dt><dd>Brass C37700 · nylon 6 · oak · steel</dd></div><div><dt>Result</dt><dd class="hot">Nylon ~90× more deformation than brass</dd></div></dl>
   </header>
+  <section class="block lead-visual">
+    <div class="viewer-head"><p class="label" style="color:var(--accent)">3D model · from my SolidWorks file</p><div class="viewer-btns"><button type="button" class="copy" id="gtReset">Reset view</button></div></div>
+    <div class="viewer" id="gt-viewer" role="img" aria-label="Interactive 3D model of the guitar"><p class="viewer-msg">Loading 3D model…</p></div>
+  </section>
+  <div class="summary">
   <section class="block contrib-top">
     <p class="label">My contribution</p>
     <dl class="contrib"><div><dt>What</dt><dd>Modeled a 988 mm guitar in SolidWorks; compared brass and nylon-6 strings in ANSYS.</dd></div><div><dt>Problem solving</dt><dd>Simplified to a 0.5 mm-radius string on a fixed body; applied a 20 N fret press and 20 N pluck from measured finger forces.</dd></div><div class="res"><dt>Result</dt><dd>At similar peak stress, <strong>nylon deformed ~90× more than brass</strong>: flexible vs stiff. Upgrade path: SMAT brass + coating.</dd></div></dl>
   </section>
-  <section class="block">
-    <div class="viewer-head"><p class="label" style="color:var(--accent)">3D model · from my SolidWorks file</p><div class="viewer-btns"><button type="button" class="copy" id="gtReset">Reset view</button></div></div>
-    <div class="viewer" id="gt-viewer" role="img" aria-label="Interactive 3D model of the guitar"><p class="viewer-msg">Loading 3D model…</p></div>
-  </section>
+  <aside class="facts-col"><dl class="meta"><div><dt>Role</dt><dd>Individual project</dd></div><div><dt>Tools</dt><dd>SolidWorks 2022 · ANSYS 2023 R2</dd></div><div><dt>Materials</dt><dd>Brass C37700 · nylon 6 · oak · steel</dd></div><div><dt>Result</dt><dd class="hot">Nylon ~90× more deformation than brass</dd></div></dl></aside>
+  </div>
   <section class="block">
     <p class="label">01 · FEA</p><h3>Same load, two string materials</h3><ul class="did"><li>Full guitar model built first; string study run on a simplified body</li><li>Body fixed; string 0.5 mm radius; mesh 10 mm body, 5 mm string</li><li>Loads: 20 N fret press (Y) + 20 N pluck (Z)</li></ul>
     <div class="gal gal-2" style="margin-top:14px"><figure><div class="frame" style="height:auto"><img src="img/gt-ansys.jpg" alt="ANSYS full guitar setup" width="2156" height="930" loading="lazy"></div><figcaption><b>FIG 1</b>Full guitar model in ANSYS</figcaption></figure><figure><div class="frame" style="height:auto"><img src="img/gt-simple-setup.jpg" alt="Simplified ANSYS string model" width="849" height="502" loading="lazy"></div><figcaption><b>FIG 2</b>Simplified string model with loads</figcaption></figure></div>
